@@ -43,8 +43,9 @@ public class HibernateUtil {
         properties.put("hibernate.connection.username", "root");
         properties.put("hibernate.connection.password", "root");
         properties.put("hibernate.current_session_context_class", "thread");
+        properties.put("show_sql", "true");
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.put("hibernate.enable_lazy_load_no_tran", "false");
+//        properties.put("hibernate.enable_lazy_load_no_tran", "false");
         config.setProperties(properties);
 
         config.addAnnotatedClass(User.class);
