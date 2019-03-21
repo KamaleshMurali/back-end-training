@@ -19,7 +19,6 @@ import com.ofs.training.model.User;
  * @since Mar 12, 2019
  */
 @org.springframework.context.annotation.Configuration
-@EnableTransactionManagement
 
 public class HibernateUtil {
 
