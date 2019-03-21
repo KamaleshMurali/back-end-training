@@ -6,6 +6,7 @@ package com.ofs.training.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ofs.training.dao.UserDaoImpl;
 import com.ofs.training.model.User;
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
      * @see com.ofs.training.service.UserService#getUser()
      */
     @Override
+    @Transactional
     public User getUser(long id) {
 
         return userDao.getUser(id);
@@ -31,6 +33,7 @@ public class UserServiceImpl implements UserService {
      * @see com.ofs.training.service.UserService#create(com.ofs.training.model.User)
      */
     @Override
+    @Transactional
     public User create(User user) {
 
         return userDao.create(user);
