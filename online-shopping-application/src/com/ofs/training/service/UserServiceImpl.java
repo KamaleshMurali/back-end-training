@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User getUser(long id) {
-        // TODO Auto-generated method stub
+
         return userDao.getUser(id);
     }
     /* (non-Javadoc)
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User create(User user) {
-        // TODO Auto-generated method stub
+
         return userDao.create(user);
     }
     /* (non-Javadoc)
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void delete(long id) {
-        // TODO Auto-generated method stub
+
         userDao.delete(id);
     }
     /* (non-Javadoc)
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User update(User user) {
-        // TODO Auto-generated method stub
+
         return userDao.update(user);
     }
     /* (non-Javadoc)
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> readAll() {
-        // TODO Auto-generated method stub
+
         return userDao.readAll();
     }
 
