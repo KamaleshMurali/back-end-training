@@ -3,12 +3,9 @@
  */
 package com.ofs.training.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ofs.training.model.User;
@@ -26,10 +23,9 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public User getUser(long id) {
-        // TODO Auto-generated method stub
+
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         System.out.println(session);
-//        Session session = this.sessionFactory.getCurrentSession();
         session.beginTransaction();
         User user = (User)session.load(User.class, new Long(id));
         session.getTransaction().commit();
@@ -41,7 +37,7 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public User create(User user) {
-        // TODO Auto-generated method stub
+
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         System.out.println(session);
         session.beginTransaction();
@@ -70,7 +66,7 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public User update(User user) {
-        // TODO Auto-generated method stub
+
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.update(user);
@@ -87,16 +83,11 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public List<User> readAll() {
-        // TODO Auto-generated method stub
-        
+
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         List<User> users = session.createQuery("from User").list();
         session.getTransaction().commit();
         return users;
     }
-    
-    
-
-
 }
