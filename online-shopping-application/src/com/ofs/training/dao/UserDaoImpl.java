@@ -26,9 +26,9 @@ public class UserDaoImpl implements UserDao {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         System.out.println(session);
-        session.beginTransaction();
+//        session.beginTransaction();
         User user = (User)session.load(User.class, new Long(id));
-        session.getTransaction().commit();
+//        session.getTransaction().commit();
         return user;
     }
 
@@ -40,9 +40,9 @@ public class UserDaoImpl implements UserDao {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         System.out.println(session);
-        session.beginTransaction();
+//        session.beginTransaction();
         session.save(user);
-        session.getTransaction().commit();
+//        session.getTransaction().commit();
         return user;
     }
 
