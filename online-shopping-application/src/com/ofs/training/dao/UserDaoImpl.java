@@ -18,9 +18,6 @@ import com.ofs.training.resource.HibernateUtil;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    /* (non-Javadoc)
-     * @see com.ofs.training.dao.UserDao#getUser()
-     */
     @Override
     public User getUser(long id) {
 
@@ -32,9 +29,6 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    /* (non-Javadoc)
-     * @see com.ofs.training.dao.UserDao#create()
-     */
     @Override
     public User create(User user) {
 
@@ -46,9 +40,6 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    /* (non-Javadoc)
-     * @see com.ofs.training.dao.UserDao#delete(long)
-     */
     @Override
     public void delete(long id) {
         // TODO Auto-generated method stub
@@ -61,9 +52,6 @@ public class UserDaoImpl implements UserDao {
         session.getTransaction().commit();
     }
 
-    /* (non-Javadoc)
-     * @see com.ofs.training.dao.UserDao#update(com.ofs.training.model.User)
-     */
     @Override
     public User update(User user) {
 
@@ -78,9 +66,6 @@ public class UserDaoImpl implements UserDao {
         return updatedUser;
     }
 
-    /* (non-Javadoc)
-     * @see com.ofs.training.dao.UserDao#readAll()
-     */
     @Override
     public List<User> readAll() {
 

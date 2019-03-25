@@ -50,7 +50,6 @@ public class UserController {
         try {
             result = obj.writeValueAsString(userOne);
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return new ResponseEntity<String>(result, HttpStatus.OK);
@@ -67,7 +66,6 @@ public class UserController {
         try {
             result = obj.writeValueAsString(user);
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return new ResponseEntity<String>(result, HttpStatus.OK);
@@ -90,7 +88,6 @@ public class UserController {
         try {
             result = obj.writeValueAsString(createdUser);
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return new ResponseEntity<String>(result, HttpStatus.OK);
@@ -113,7 +110,6 @@ public class UserController {
         try {
             result = obj.writeValueAsString(updatedUser);
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return new ResponseEntity<String>(result, HttpStatus.OK);
@@ -129,7 +125,6 @@ public class UserController {
         try {
             result = obj.writeValueAsString(users);
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return new ResponseEntity<String>(result, HttpStatus.OK);

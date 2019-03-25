@@ -9,9 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -30,7 +28,7 @@ public class HibernateUtil {
 //    @Autowired
 //    Environment env;
 
-    @Bean
+//    @Bean
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             sessionFactory = buildSessionFactory();
@@ -62,11 +60,11 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    @Bean
-    public HibernateTransactionManager txnManager() {
-
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(buildSessionFactory());
-        return transactionManager;
-    }
+//    @Bean
+//    public HibernateTransactionManager txnManager() {
+//
+//        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+//        transactionManager.setSessionFactory(buildSessionFactory());
+//        return transactionManager;
+//    }
 }
