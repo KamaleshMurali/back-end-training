@@ -25,7 +25,7 @@ public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
 
-//    @Bean
+    @Bean
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             sessionFactory = buildSessionFactory();
