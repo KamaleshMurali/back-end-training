@@ -21,7 +21,8 @@ public class UserDaoImpl implements UserDao {
 
     @Autowired
     public SessionFactory sessionFactory;
-//    protected Session getSession() {
+
+//    private Session getSession() {
 //        return sessionFactory.getCurrentSession();
 //    }
     
@@ -29,7 +30,7 @@ public class UserDaoImpl implements UserDao {
     public User getUser(long id) {
 
 //        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Session session = this.sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         if (session.isConnected()) {
             System.out.println("hello");
         }

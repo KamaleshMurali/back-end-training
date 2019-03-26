@@ -7,19 +7,19 @@ public class MyFrontController extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected Class<?>[] getRootConfigClasses() {
         // TODO Auto-generated method stub
-        return new Class[] {MyWebMVC.class};
+        return new Class[] {HibernateUtil.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
         // TODO Auto-generated method stub
-        return null;
+        return new Class[] {MyWebMVC.class};
     }
 
     @Override
     protected String[] getServletMappings() {
         // TODO Auto-generated method stub
-        return new String[] {"/*"};
+        return new String[] {"/"};
     }
 
 }

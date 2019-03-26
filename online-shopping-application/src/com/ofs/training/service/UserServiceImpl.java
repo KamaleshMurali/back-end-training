@@ -5,8 +5,9 @@ package com.ofs.training.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ofs.training.dao.UserDaoImpl;
 import com.ofs.training.model.User;

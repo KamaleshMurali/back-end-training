@@ -7,11 +7,12 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -20,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author kamalesh.murali
  * @since Mar 12, 2019
  */
-@org.springframework.context.annotation.Configuration
+@Configuration
 @EnableTransactionManagement
 @ComponentScan({"com.ofs.training.resource"})
 public class HibernateUtil {
@@ -90,17 +91,17 @@ public class HibernateUtil {
 //    }
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
+    public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.ofs.training" });
+        sessionFactory.setPackagesToScan(new String[] { "com.ofs.training.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
      }
      
     @Bean
     public DataSource dataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://192.168.20.170/training");
         dataSource.setUsername("root");
@@ -110,17 +111,17 @@ public class HibernateUtil {
      
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.put("hibernate.show_sql", "true");
-        properties.put("hibernate.format_sql", "true");
+        properties.put("dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.put("show_sql", "true");
+        properties.put("format_sql", "false");
+        System.out.println("properties has been found");
         return properties;        
     }
      
     @Bean
-    @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory s) {
+    public HibernateTransactionManager transactionManager() {
        HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(s);
+       txManager.setSessionFactory(getSessionFactory().getObject());
        return txManager;
     }
 }
