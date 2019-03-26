@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ofs.training.model.User;
-import com.ofs.training.service.UserService;
+import com.ofs.training.service.UserServiceImpl;
 
 /**
  * 
@@ -33,7 +33,7 @@ import com.ofs.training.service.UserService;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @GetMapping
     private ResponseEntity<String> getUsers() {
