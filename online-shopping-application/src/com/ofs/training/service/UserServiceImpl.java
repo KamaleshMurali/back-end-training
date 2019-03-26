@@ -7,9 +7,10 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ofs.training.dao.UserDaoImpl;
+import com.ofs.training.dao.UserDao;
 import com.ofs.training.model.User;
 
 /**
@@ -19,7 +20,9 @@ import com.ofs.training.model.User;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserDaoImpl userDao = new UserDaoImpl();
+//    private UserDao userDao = new UserDao();
+    @Autowired
+    private UserDao userDao;
 
     @Override
     @Transactional
