@@ -22,17 +22,12 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     public SessionFactory sessionFactory;
 
-//    private Session getSession() {
-//        return sessionFactory.getCurrentSession();
-//    }
-    
     @Override
     public User getUser(long id) {
 
-//        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Session session = sessionFactory.getCurrentSession();
         if (session.isConnected()) {
-            System.out.println("hello");
+            System.out.println("connection established...");
         }
         System.out.println(session);
 //        session.beginTransaction();
@@ -44,11 +39,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User create(User user) {
 
-//        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Session session = this.sessionFactory.getCurrentSession();
-        System.out.println(session);
 //        session.beginTransaction();
-        session.save(user);
+        sessionFactory.getCurrentSession().save(user);
 //        session.getTransaction().commit();
         return user;
     }
