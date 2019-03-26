@@ -6,10 +6,11 @@ package com.ofs.training.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ofs.training.model.User;
-import com.ofs.training.resource.HibernateUtil;
 
 /**
  * @author kamalesh.murali
@@ -18,10 +19,20 @@ import com.ofs.training.resource.HibernateUtil;
 @Repository
 public class UserDaoImpl implements UserDao {
 
+    @Autowired
+    public SessionFactory sessionFactory;
+//    protected Session getSession() {
+//        return sessionFactory.getCurrentSession();
+//    }
+    
     @Override
     public User getUser(long id) {
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = this.sessionFactory.getCurrentSession();
+        if (session.isConnected()) {
+            System.out.println("hello");
+        }
         System.out.println(session);
 //        session.beginTransaction();
         User user = (User)session.load(User.class, new Long(id));
@@ -32,7 +43,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User create(User user) {
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session session = this.sessionFactory.getCurrentSession();
         System.out.println(session);
 //        session.beginTransaction();
         session.save(user);
@@ -43,36 +55,38 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void delete(long id) {
         // TODO Auto-generated method stub
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        User fetchedUser = session.load(User.class, new Long(id));
-        if (fetchedUser != null) {
-            session.delete(fetchedUser);
-        }
-        session.getTransaction().commit();
+//        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//        session.beginTransaction();
+//        User fetchedUser = session.load(User.class, new Long(id));
+//        if (fetchedUser != null) {
+//            session.delete(fetchedUser);
+//        }
+//        session.getTransaction().commit();
     }
 
     @Override
     public User update(User user) {
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        session.update(user);
-        session.getTransaction().commit();
-        Session anotherSession = HibernateUtil.getSessionFactory().getCurrentSession();
-        anotherSession.beginTransaction();
-        User updatedUser = anotherSession.load(User.class, new Long(user.getId()));
-        anotherSession.getTransaction().commit();
-        return updatedUser;
+//        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//        session.beginTransaction();
+//        session.update(user);
+//        session.getTransaction().commit();
+//        Session anotherSession = HibernateUtil.getSessionFactory().getCurrentSession();
+//        anotherSession.beginTransaction();
+//        User updatedUser = anotherSession.load(User.class, new Long(user.getId()));
+//        anotherSession.getTransaction().commit();
+//        return updatedUser;
+        return null;
     }
 
     @Override
     public List<User> readAll() {
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        List<User> users = session.createQuery("from User").list();
-        session.getTransaction().commit();
-        return users;
+//        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//        session.beginTransaction();
+//        List<User> users = session.createQuery("from User").list();
+//        session.getTransaction().commit();
+//        return users;
+        return null;
     }
 }
