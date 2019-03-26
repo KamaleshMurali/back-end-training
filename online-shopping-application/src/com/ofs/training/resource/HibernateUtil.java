@@ -7,8 +7,6 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"com.ofs.training.resource"})
+@ComponentScan({"com.ofs.training"})
 public class HibernateUtil {
 
 //    private static SessionFactory sessionFactory;
@@ -93,9 +91,26 @@ public class HibernateUtil {
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        
         sessionFactory.setDataSource(dataSource());
+        Properties properties = new Properties();
+//        properties.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+//        properties.put("hibernate.connection.url", "jdbc:mysql://192.168.20.170/training");
+//        properties.put("hibernate.connection.username", "root");
+//        properties.put("hibernate.connection.password", "root");
+//        properties.put("hibernate.current_session_context_class", "thread");
+        properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+//        properties.put("hibernate.c3p0.min_size", "5");
+//        properties.put("hibernate.c3p0.max_size", "20");
+//        properties.put("hibernate.c3p0.acquire_increment", "5");
+//        properties.put("hibernate.c3p0.min_size", "5");
+//        properties.put("hibernate.c3p0.min_size", "5");
+
+//        sessionFactory.setDataSource(dataSource());
+        sessionFactory.setHibernateProperties(properties);
         sessionFactory.setPackagesToScan(new String[] { "com.ofs.training.model" });
-        sessionFactory.setHibernateProperties(hibernateProperties());
+
         return sessionFactory;
      }
      
@@ -109,14 +124,14 @@ public class HibernateUtil {
         return dataSource;
     }
      
-    private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.put("dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.put("show_sql", "true");
-        properties.put("format_sql", "false");
-        System.out.println("properties has been found");
-        return properties;        
-    }
+//    private Properties hibernateProperties() {
+//        Properties properties = new Properties();
+//        properties.put("dialect", "org.hibernate.dialect.MySQLDialect");
+//        properties.put("show_sql", "true");
+//        properties.put("format_sql", "false");
+//        System.out.println("properties has been found");
+//        return properties;        
+//    }
      
     @Bean
     public HibernateTransactionManager transactionManager() {
